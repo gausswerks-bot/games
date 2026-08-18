@@ -83,7 +83,12 @@ export class GameRoom extends DurableObject<Env> {
       const assigned = new Set(this.room.players.flatMap(item => item.armies));
       if (["Light","Medium","Heavy","Lab"].every(army => assigned.has(army as Army))) this.room.phase = "setup";
     } else if (message.type === "state" && this.room.phase !== "lobby" && message.state) {
-      const canWrite = this.room.phase === "setup" || (message.activeArmy && player.armies.includes(message.activeArmy));
+      const currentTurn = (this.room.gameState as { turn?: number } | null)?.turn;
+      const currentArmy = typeof currentTurn === "number" ? (["Light", "Medium", "Heavy", "Lab"] as Army[])[currentTurn] : null;
+      // Authorise against the state currently held by the room. An end-turn
+      // update already names the next active army, but it is still being made
+      // legitimately by the player whose turn is ending.
+      const canWrite = this.room.phase === "setup" || (currentArmy ? player.armies.includes(currentArmy) : !!message.activeArmy && player.armies.includes(message.activeArmy));
       if (canWrite) { this.room.gameState = message.state; this.room.revision++; this.room.phase = message.complete ? "complete" : "game"; }
     }
     await this.save();

@@ -13,4 +13,5 @@ test("builds the games hub, multiplayer room and Cloudflare worker", async () =>
   assert.match(room, /Create room/);
   assert.match(worker, /GameRoom/);
   assert.match(config, /GAME_ROOMS/);
+  assert.match(worker, /currentArmy/);
 });
