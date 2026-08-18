@@ -8,6 +8,10 @@ const localBindingConfig = {
   main: "./worker/index.ts",
   name: "games",
   compatibility_flags: ["nodejs_compat"],
+  durable_objects: {
+    bindings: [{ name: "GAME_ROOMS", class_name: "GameRoom" }],
+  },
+  migrations: [{ tag: "v1", new_sqlite_classes: ["GameRoom"] }],
 };
 
 export default defineConfig(async () => {

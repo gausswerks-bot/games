@@ -7,6 +7,8 @@ The source for the games hub at `games.gausswerks.co`.
 - `/` — games hub
 - `/alien` — Alien Invasion cooperative board-game prototype
 
+Alien Invasion supports five-letter multiplayer rooms backed by a Cloudflare Durable Object. Players may claim one or more of the four armies, reconnect after interruptions, and play from separate devices with live state synchronisation. Rooms expire three hours after creation.
+
 ## Local development
 
 Requires Node.js 22.13 or newer.
