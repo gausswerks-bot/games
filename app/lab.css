@@ -1,0 +1,142 @@
+.lab-command rect {
+  fill: #22300d;
+  stroke: var(--acid);
+  stroke-width: 2;
+}
+
+.lab-command text {
+  fill: var(--acid);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-anchor: middle;
+}
+
+.relocate {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid #52602d;
+  background: #18200f;
+}
+
+.relocate span {
+  margin-right: auto;
+  color: var(--acid);
+  font-size: 9px;
+}
+
+.relocate button {
+  background: #253013 !important;
+  border-color: #718332 !important;
+}
+
+.relocate button:disabled {
+  opacity: .4;
+}
+
+.revive {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid #52602d;
+  background: #18200f;
+}
+
+.revive span,
+.revive small {
+  grid-column: 1 / -1;
+  color: var(--acid);
+  font-size: 9px;
+}
+
+.revive button:disabled {
+  opacity: .4;
+}
+
+.drop strong {
+  color: var(--acid);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.drop span small {
+  color: var(--acid);
+  font-size: 9px;
+  letter-spacing: .08em;
+}
+
+.target-cell > polygon {
+  opacity: .52;
+  stroke: var(--acid);
+  stroke-width: 4;
+}
+
+.alien.target {
+  filter: drop-shadow(0 0 12px var(--acid));
+}
+
+.alien.target circle:first-child {
+  stroke: var(--acid);
+}
+
+.history {
+  max-height: 300px;
+  overflow: auto;
+  padding: 14px;
+  background: #101819e8;
+  border: 1px solid var(--line);
+}
+
+.history header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 9px;
+}
+
+.history h4 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .15em;
+}
+
+.history header button {
+  border: 1px solid var(--acid);
+  background: #253013;
+  color: var(--acid);
+  padding: 6px 8px;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.history header button:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.history > div {
+  display: grid;
+  gap: 3px;
+  padding: 8px 0;
+  border-bottom: 1px solid #26302f;
+}
+
+.history b {
+  font-size: 10px;
+}
+
+.history small,
+.history p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 8px;
+  line-height: 1.45;
+}
