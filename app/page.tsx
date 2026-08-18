@@ -9,7 +9,7 @@ export default function GamesHub() {
         <p>Original games and playable prototypes.</p>
       </header>
       <section className="game-grid" aria-label="Available games">
-        <Link className="game-card" href="/alien">
+        <article className="game-card">
           <div className="game-card-art" aria-hidden="true">
             <span className="planet" />
             <span className="invader invader-one">◆</span>
@@ -20,9 +20,12 @@ export default function GamesHub() {
             <span className="game-status">PLAYABLE PROTOTYPE</span>
             <h2>Alien Invasion</h2>
             <p>Defend five cities, develop alien technology and destroy the mothership before the invasion overwhelms the Lab.</p>
-            <span className="play-link">Play now <span aria-hidden="true">→</span></span>
+            <div className="play-choices">
+              <Link className="play-link primary-choice" href="/alien?local=1"><b>Single player</b><small>Original shared-screen game</small></Link>
+              <Link className="play-link" href="/alien"><b>Multiplayer</b><small>Join separate devices by room word</small></Link>
+            </div>
           </div>
-        </Link>
+        </article>
       </section>
     </main>
   );
