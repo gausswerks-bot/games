@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Game from "./game";
+import HowToPlay from "./how-to-play";
 
 export type ArmyName = "Light" | "Medium" | "Heavy" | "Lab";
 export type RoomPlayer = { id: string; token: string; name: string; armies: ArmyName[]; connected: boolean };
@@ -124,6 +125,7 @@ export default function RoomGate() {
         })}</div>
         <div className="room-players">{view.players.map(player => <span key={player.id} className={player.connected ? "online" : ""}>{player.name} · {player.armies.length || "selecting"}</span>)}</div>
         <button className="room-primary" disabled={!filled} onClick={() => send({ type: "start" })}>{filled ? "Start game" : "Assign all four armies"}</button>
+        <HowToPlay />
       </section>
     </main>;
   }
@@ -136,5 +138,6 @@ export default function RoomGate() {
     {error && <p className="room-error">{error}</p>}
     <div className="room-actions">{screen === "join" ? <><button onClick={() => setScreen("home")}>Back</button><button className="room-primary" onClick={() => enter(false)}>Join room</button></> : <><button onClick={() => setScreen("join")}>Join room</button><button className="room-primary" onClick={() => enter(true)}>Create room</button></>}</div>
     <a className="local-play" href="/alien?local=1">Play on one screen instead</a>
+    <HowToPlay />
   </section></main>;
 }
