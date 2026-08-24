@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HowToPlay from "./alien/how-to-play";
 
 export default function GamesHub() {
   return (
@@ -24,6 +25,7 @@ export default function GamesHub() {
               <Link className="play-link primary-choice" href="/alien?local=1"><b>Single player</b><small>Original shared-screen game</small></Link>
               <Link className="play-link" href="/alien"><b>Multiplayer</b><small>Join separate devices by room word</small></Link>
             </div>
+            <HowToPlay />
           </div>
         </article>
       </section>
