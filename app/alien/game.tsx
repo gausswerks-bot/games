@@ -3,6 +3,7 @@ import "../lab.css";
 
 import { useEffect, useRef, useState } from "react";
 import type { MultiplayerSession } from "./room";
+import HowToPlay from "./how-to-play";
 
 type Army = "Light" | "Medium" | "Heavy" | "Lab";
 type Resource = "Steel" | "Energy" | "Intelligence" | "Alien Tech";
@@ -108,7 +109,7 @@ export default function Home({multiplayer}:{multiplayer?:MultiplayerSession}){
  const chosen=units.find(x=>x.id===selected);
  return <main className="shell">
   {multiplayer&&<div className="room-bar"><b>ROOM {multiplayer.code}</b><span>{canAct?`Your ${active} command turn`:`Waiting for ${active} command`}</span><small>You control {multiplayer.armies.join(", ")}</small></div>}
-  <header><div><p className="eyebrow">COOPERATIVE TACTICAL PROTOTYPE</p><h1>Alien Invasion</h1></div><div className="weapon"><span>ULTIMATE WEAPON <b>{weapon}/15</b></span><div>{Array.from({length:15},(_,i)=><i key={i} className={i<weapon?"on":""}/>)}</div></div></header>
+  <header><div><p className="eyebrow">COOPERATIVE TACTICAL PROTOTYPE</p><h1>Alien Invasion</h1></div><div className="game-header-actions"><HowToPlay compact/><div className="weapon"><span>ULTIMATE WEAPON <b>{weapon}/15</b></span><div>{Array.from({length:15},(_,i)=><i key={i} className={i<weapon?"on":""}/>)}</div></div></div></header>
   {!started?<section className="setup"><div><p className="eyebrow">ESTABLISH THE LAB</p><h2>Choose the landing city</h2><p>The Lab sits outside its city. Humans deploy from space 15 downward: Heavy on 15, Medium on 14–13, and Light on 12–10. All aliens deploy upward from 1 to 15. The Lab is destroyed only if all 15 city spaces remain occupied when a player ends their turn.</p><nav>{[1,2,3,4,5].map(c=><button key={c} className={labCity===c?"picked":""} style={{"--city":COLORS[c-1]} as React.CSSProperties} onClick={()=>setLabCity(c)}>City {c}</button>)}</nav><button className="primary" onClick={begin}>Begin invasion</button></div><aside><b>15</b><span>ALIEN TECH<br/>TO WIN</span></aside></section>:
   <><section className="status"><div><span>ACTIVE ARMY</span><b>{active}</b></div><div><span>PHASE</span><b>{phase}</b></div><div><span>DECK</span><b>{60-index} cards</b></div><div><span>ALIENS</span><b>{aliens.size}</b></div></section>
   {over&&<div className="over"><b>{over}</b><button onClick={()=>setStarted(false)}>New game</button></div>}
